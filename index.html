@@ -87,6 +87,17 @@ h1,h2{font-weight:700;line-height:1.12;letter-spacing:-.01em}
 
 /* ---------- cover ---------- */
 .cover{justify-content:center}
+.cover .marque,.cover .sub,.cover .meta{position:relative;z-index:2}
+.cover-art{
+  position:absolute;right:clamp(-4%,-1.5vw,0px);top:50%;
+  transform:translateY(-44%);
+  width:min(50vw,620px);max-height:96%;object-fit:contain;
+  mix-blend-mode:multiply;opacity:.96;pointer-events:none;z-index:1;
+  -webkit-mask-image:radial-gradient(120% 110% at 62% 50%, #000 64%, transparent 99%);
+  mask-image:radial-gradient(120% 110% at 62% 50%, #000 64%, transparent 99%);
+  animation:artin 1.3s cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes artin{from{opacity:0;transform:translateY(-44%) scale(1.04)}to{opacity:.96;transform:translateY(-44%)}}
 .cover .marque{position:relative}
 .seal{
   position:absolute;top:clamp(-.4rem,-1vw,-1rem);right:clamp(0rem,2vw,2rem);
@@ -180,6 +191,8 @@ ul.clean li b{font-weight:700}
 
 /* closing */
 .closing{justify-content:center}
+.closing-art{position:absolute;right:-7%;bottom:-12%;width:min(46vw,540px);object-fit:contain;mix-blend-mode:multiply;opacity:.12;pointer-events:none;z-index:0}
+.closing .reveal,.closing .cards,.closing .note{position:relative;z-index:1}
 .closing h2{font-size:clamp(2rem,5vw,4rem);max-width:18ch;line-height:1.18}
 .closing .big{color:var(--seal)}
 
@@ -210,6 +223,7 @@ ul.clean li b{font-weight:700}
   .tbl .tr .td:first-child,.tbl .tr .th:first-child{border-right:0;border-bottom:1px solid var(--line)}
   .dots{display:none}
   .tl .ev{grid-template-columns:84px 1fr;gap:.7rem}
+  .cover-art{opacity:.14;width:118%;right:auto;left:-9%;mask-image:none;-webkit-mask-image:none}
 }
 @media print{
   body{overflow:visible;height:auto}
@@ -225,6 +239,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 1 COVER -->
   <section class="slide cover active">
+    <img class="cover-art" src="assets/cover.png" alt="">
     <div class="marque reveal">
       <div class="seal"><span>智</span><span>閱</span></div>
       <div class="kicker">臺北市蓬萊國民小學・數位學習中心</div>
@@ -415,6 +430,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 13 窗口 + 結語 -->
   <section class="slide closing">
+    <img class="closing-art" src="assets/cover.png" alt="">
     <div class="reveal"><span class="kicker"><span class="snum">13 / 13</span>　聯絡窗口</span>
     <h2 class="ink">一次把欄位填好填滿，<br>未來新平臺就能<span class="big">直接接住</span></h2></div>
     <div class="cards reveal">

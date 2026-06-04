@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智慧閱讀平臺・資料介接協力說明 ｜ 2026.06.08</title>
+<meta name="description" content="臺北市智慧閱讀平臺 — 致線上資料庫得標廠商與資料庫維運廠商的資料介接配合事項說明">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..700&family=Noto+Serif+TC:wght@300;400;500;600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ede1;
+  --paper-2:#ece3d3;
+  --ink:#1f1c17;
+  --ink-soft:#5a534760;
+  --ink-mid:#6b6253;
+  --seal:#b23a2e;
+  --seal-deep:#8f2c22;
+  --gold:#a07d3e;
+  --line:rgba(31,28,23,.14);
+  --line-strong:rgba(31,28,23,.28);
+  --card:#faf6ed;
+  --shadow:0 18px 50px -20px rgba(31,28,23,.45);
+  --serif:"Noto Serif TC",serif;
+  --display:"Fraunces","Noto Serif TC",serif;
+  --sans:"Noto Sans TC",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:var(--serif);
+  background:var(--paper);
+  color:var(--ink);
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+/* paper texture */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(120% 120% at 8% 4%, #f7f1e6 0%, rgba(247,241,230,0) 42%),
+    radial-gradient(120% 120% at 96% 98%, #e7dcc7 0%, rgba(231,220,199,0) 46%);
+  mix-blend-mode:multiply;opacity:.9;
+}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- deck ---------- */
+.deck{position:relative;width:100vw;height:100vh;z-index:1}
+.slide{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(2.2rem,5.5vw,6rem) clamp(2.2rem,7vw,9rem);
+  opacity:0;visibility:hidden;
+  transform:translateY(14px) scale(.994);
+  transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1), visibility 0s .6s;
+}
+.slide.active{opacity:1;visibility:visible;transform:none;transition:opacity .6s ease, transform .7s cubic-bezier(.2,.7,.2,1);}
+.slide.active .reveal{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.slide.active .reveal:nth-child(2){animation-delay:.08s}
+.slide.active .reveal:nth-child(3){animation-delay:.16s}
+.slide.active .reveal:nth-child(4){animation-delay:.24s}
+.slide.active .reveal:nth-child(5){animation-delay:.32s}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+.kicker{
+  font-family:var(--sans);font-weight:700;
+  font-size:clamp(.66rem,1vw,.8rem);letter-spacing:.34em;
+  text-transform:uppercase;color:var(--seal);
+  display:flex;align-items:center;gap:.9rem;margin-bottom:1.4rem;
+}
+.kicker::before{content:"";width:clamp(22px,3vw,46px);height:2px;background:var(--seal)}
+.snum{
+  font-family:var(--display);font-weight:300;font-style:italic;
+  font-size:clamp(.9rem,1.1vw,1rem);color:var(--ink-mid);
+}
+h1,h2{font-weight:700;line-height:1.12;letter-spacing:-.01em}
+.slide h2{font-size:clamp(1.7rem,4.2vw,3.3rem);margin-bottom:.4rem}
+.lead{font-size:clamp(1.02rem,1.6vw,1.4rem);color:var(--ink-mid);font-weight:400;line-height:1.7;max-width:60ch}
+.hl{color:var(--seal);font-weight:600}
+.ink{color:var(--ink)}
+.u{box-shadow:inset 0 -.5em 0 rgba(178,58,46,.16)}
+
+/* ---------- cover ---------- */
+.cover{justify-content:center}
+.cover .marque{position:relative}
+.seal{
+  position:absolute;top:clamp(-.4rem,-1vw,-1rem);right:clamp(0rem,2vw,2rem);
+  width:clamp(82px,9vw,128px);height:clamp(82px,9vw,128px);
+  border:2.5px solid var(--seal);border-radius:14px;
+  display:grid;place-content:center;transform:rotate(6deg);
+  color:var(--seal);font-weight:900;font-size:clamp(1.5rem,2.4vw,2.4rem);
+  letter-spacing:.05em;line-height:1;box-shadow:0 0 0 5px rgba(178,58,46,.08);
+  writing-mode:vertical-rl;padding:.4rem .2rem;
+}
+.seal span{display:block}
+.cover h1{font-size:clamp(2.6rem,7vw,6rem);line-height:1.04;margin:.2rem 0 1.3rem}
+.cover h1 .row2{color:var(--seal)}
+.cover .sub{font-size:clamp(1.05rem,1.9vw,1.6rem);color:var(--ink-mid);font-weight:400;letter-spacing:.02em;border-left:3px solid var(--gold);padding-left:1rem;margin:.4rem 0 2.4rem;max-width:46ch;line-height:1.6}
+.cover .meta{display:flex;flex-wrap:wrap;gap:.7rem 1.6rem;font-family:var(--sans);font-size:clamp(.78rem,1.1vw,.95rem);color:var(--ink-mid);letter-spacing:.06em}
+.cover .meta b{color:var(--ink);font-weight:700}
+.cover .meta .dot{color:var(--seal)}
+
+/* ---------- generic content blocks ---------- */
+.body{margin-top:clamp(1.2rem,2.4vw,2.2rem);display:flex;flex-direction:column;gap:1.1rem;max-width:74ch}
+ul.clean{list-style:none;display:flex;flex-direction:column;gap:.85rem}
+ul.clean li{position:relative;padding-left:1.7rem;font-size:clamp(.98rem,1.45vw,1.22rem);line-height:1.6;color:var(--ink)}
+ul.clean li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;background:var(--seal);border-radius:2px;transform:rotate(45deg)}
+ul.clean li b{font-weight:700}
+.muted{color:var(--ink-mid)}
+
+/* flow diagram */
+.flow{display:flex;align-items:stretch;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+.node{
+  flex:1 1 140px;min-width:130px;background:var(--card);border:1.5px solid var(--line-strong);
+  border-radius:12px;padding:1rem 1.1rem;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:.3rem;
+}
+.node .t{font-weight:700;font-size:clamp(1rem,1.4vw,1.2rem)}
+.node .d{font-size:.84rem;color:var(--ink-mid);font-family:var(--sans);line-height:1.5}
+.node.accent{border-color:var(--seal);background:#fbf2ee}
+.node.accent .t{color:var(--seal-deep)}
+.arrow{align-self:center;font-family:var(--display);color:var(--gold);font-size:1.6rem;font-weight:600;padding:0 .1rem}
+.flowcap{font-family:var(--sans);font-size:.86rem;color:var(--ink-mid);margin-top:1rem;line-height:1.6;border-top:1px dashed var(--line-strong);padding-top:.9rem}
+
+/* six-up grid */
+.grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-top:1.7rem}
+.cell{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:1.15rem 1.2rem;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.cell .no{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.6rem;color:var(--seal);line-height:1}
+.cell .ct{font-weight:700;font-size:clamp(1rem,1.3vw,1.18rem);margin:.45rem 0 .25rem}
+.cell .cd{font-family:var(--sans);font-size:.82rem;color:var(--ink-mid);line-height:1.55}
+
+/* tables */
+.tbl{margin-top:1.5rem;border:1.5px solid var(--line-strong);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:var(--card)}
+.tbl .tr{display:grid;grid-template-columns:1fr 1.5fr;border-bottom:1px solid var(--line)}
+.tbl .tr:last-child{border-bottom:0}
+.tbl .tr.head{background:#efe5d4}
+.tbl .th,.tbl .td{padding:.7rem 1.1rem;font-size:clamp(.86rem,1.15vw,1.02rem);line-height:1.45}
+.tbl .th{font-family:var(--sans);font-weight:700;letter-spacing:.04em;color:var(--ink)}
+.tbl .tr .td:first-child{font-weight:600;border-right:1px solid var(--line)}
+.tbl .tr .th:first-child{border-right:1px solid var(--line)}
+.tbl .td .why{color:var(--ink-mid);font-family:var(--sans);font-size:.92em}
+
+/* compare cards */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.6rem}
+.cmp .col{background:var(--card);border-radius:14px;padding:1.3rem 1.4rem;box-shadow:var(--shadow);border:1.5px solid var(--line)}
+.cmp .col.want{border-color:var(--seal);background:#fbf2ee}
+.cmp .col h3{font-size:1.15rem;margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.cmp .col.have h3{color:var(--ink-mid)}
+.cmp .col.want h3{color:var(--seal-deep)}
+.cmp .tag{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.1em;padding:.18rem .5rem;border-radius:99px;text-transform:uppercase}
+.cmp .have .tag{background:#e3d8c4;color:var(--ink-mid)}
+.cmp .want .tag{background:var(--seal);color:#fff}
+.cmp ul{list-style:none;display:flex;flex-wrap:wrap;gap:.45rem}
+.cmp li{font-family:var(--sans);font-size:.85rem;padding:.3rem .65rem;border-radius:8px;background:#efe6d6;color:var(--ink)}
+.cmp .want li{background:#fff;border:1px solid rgba(178,58,46,.25)}
+.cmp .miss li{background:transparent;border:1px dashed var(--line-strong);color:var(--ink-mid);text-decoration:line-through}
+
+/* timeline */
+.tl{margin-top:1.7rem;display:flex;flex-direction:column;gap:0}
+.tl .ev{display:grid;grid-template-columns:120px 1fr;gap:1.2rem;padding:.55rem 0;position:relative}
+.tl .ev .dt{font-family:var(--display);font-style:italic;color:var(--seal);font-weight:500;font-size:clamp(.95rem,1.3vw,1.15rem);text-align:right;white-space:nowrap}
+.tl .ev .tx{border-left:2px solid var(--line-strong);padding-left:1.4rem;padding-bottom:.7rem;position:relative;font-size:clamp(.92rem,1.25vw,1.1rem)}
+.tl .ev .tx::before{content:"";position:absolute;left:-7px;top:.35em;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2.5px solid var(--seal)}
+.tl .ev.key .tx::before{background:var(--seal)}
+.tl .ev .tx small{display:block;font-family:var(--sans);color:var(--ink-mid);font-size:.82rem;margin-top:.15rem}
+
+/* contacts */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+.who{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:1.15rem 1.2rem;box-shadow:var(--shadow)}
+.who .role{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--seal)}
+.who .nm{font-weight:700;font-size:1.2rem;margin:.3rem 0 .1rem}
+.who .org{font-family:var(--sans);font-size:.84rem;color:var(--ink-mid);line-height:1.5}
+
+.note{margin-top:1.4rem;font-family:var(--sans);font-size:.88rem;color:var(--ink-mid);background:#efe6d650;border-left:3px solid var(--gold);padding:.7rem 1rem;border-radius:0 8px 8px 0;line-height:1.6;max-width:72ch}
+.note b{color:var(--seal-deep)}
+
+/* closing */
+.closing{justify-content:center}
+.closing h2{font-size:clamp(2rem,5vw,4rem);max-width:18ch;line-height:1.18}
+.closing .big{color:var(--seal)}
+
+/* ---------- chrome ---------- */
+.chrome{position:fixed;z-index:20;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;padding:1rem clamp(1.4rem,4vw,3rem);pointer-events:none}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--seal);z-index:21;transition:width .5s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 12px rgba(178,58,46,.5)}
+.counter{font-family:var(--display);font-style:italic;color:var(--ink-mid);font-size:.95rem;pointer-events:auto}
+.counter b{color:var(--ink);font-weight:600}
+.nav{display:flex;gap:.5rem;pointer-events:auto}
+.nav button{
+  width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line-strong);
+  background:var(--paper);color:var(--ink);cursor:pointer;font-size:1.1rem;
+  display:grid;place-content:center;transition:.25s;font-family:var(--serif);
+}
+.nav button:hover{background:var(--seal);color:#fff;border-color:var(--seal);transform:translateY(-2px)}
+.nav button:disabled{opacity:.3;cursor:default;transform:none;background:var(--paper);color:var(--ink);border-color:var(--line)}
+.dots{position:fixed;right:clamp(1rem,2.4vw,2rem);top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:.6rem}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--line-strong);cursor:pointer;transition:.25s;display:block}
+.dots i.on{background:var(--seal);transform:scale(1.5)}
+.hint{position:fixed;left:50%;bottom:1.1rem;transform:translateX(-50%);font-family:var(--sans);font-size:.72rem;color:var(--ink-mid);letter-spacing:.1em;z-index:20;opacity:.7;animation:fade 4s 3s forwards}
+@keyframes fade{to{opacity:0;visibility:hidden}}
+
+@media(max-width:760px){
+  .grid6,.cards{grid-template-columns:1fr 1fr}
+  .cmp{grid-template-columns:1fr}
+  .flow .arrow{transform:rotate(90deg)}
+  .tbl .tr{grid-template-columns:1fr}
+  .tbl .tr .td:first-child,.tbl .tr .th:first-child{border-right:0;border-bottom:1px solid var(--line)}
+  .dots{display:none}
+  .tl .ev{grid-template-columns:84px 1fr;gap:.7rem}
+}
+@media print{
+  body{overflow:visible;height:auto}
+  .slide{position:relative;opacity:1!important;visibility:visible!important;transform:none!important;height:100vh;page-break-after:always;border-bottom:1px solid #ccc}
+  .chrome,.dots,.progress,.hint{display:none}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- 1 COVER -->
+  <section class="slide cover active">
+    <div class="marque reveal">
+      <div class="seal"><span>智</span><span>閱</span></div>
+      <div class="kicker">臺北市蓬萊國民小學・數位學習中心</div>
+      <h1>智慧閱讀平臺<br><span class="row2">資料介接協力說明</span></h1>
+    </div>
+    <p class="sub reveal">致　線上資料庫得標廠商・資料庫維運廠商<br>從智慧閱讀系統的角度，我們希望大家一起把資料接得乾淨、接得完整。</p>
+    <div class="meta reveal">
+      <span><b>協調會</b>　2026.06.08（民國 115 年）14:00</span>
+      <span class="dot">·</span>
+      <span>採購案號 <b>11501</b></span>
+      <span class="dot">·</span>
+      <span>智慧閱讀平臺建置案</span>
+    </div>
+  </section>
+
+  <!-- 2 背景 -->
+  <section class="slide">
+    <div class="reveal"><span class="kicker"><span class="snum">01 / 12</span>　為什麼請大家來</span>
+    <h2>三個平臺，正在合而為一</h2></div>
+    <div class="body">
+      <ul class="clean">
+        <li class="reveal">臺北市將<b>兒童深耕閱讀網、國中深耕閱讀網、酷課閱讀</b>整合為單一<span class="hl">智慧閱讀平臺</span>。</li>
+        <li class="reveal">現行線上資料庫系統 <b>onlinedb.tp.edu.tw</b> 將於 <span class="hl">115/12/31 停止服務</span>，業務移轉至智慧閱讀平臺。</li>
+        <li class="reveal">因此<b>今年起</b>各資料庫的書目資料，必須能順利銜接進新平臺。</li>
+      </ul>
+      <p class="note reveal">一句話：今天要談的，是「<b>資料怎麼進、智慧閱讀怎麼接得乾淨</b>」，以及需要各位廠商配合的事項。</p>
+    </div>
+  </section>
+
+  <!-- 3 資料流向 -->
+  <section class="slide">
+    <div class="reveal"><span class="kicker"><span class="snum">02 / 12</span>　資料怎麼流（本年度作法）</span>
+    <h2>先匯入現行資料庫，智慧閱讀再取出</h2></div>
+    <div class="flow reveal">
+      <div class="node"><span class="t">內容廠商</span><span class="d">今年度線上資料庫得標廠商</span></div>
+      <span class="arrow">→</span>
+      <div class="node"><span class="t">現行 onlinedb</span><span class="d">syncDBBook API 或廠商專區 Excel 上傳</span></div>
+      <span class="arrow">→</span>
+      <div class="node accent"><span class="t">智慧閱讀平臺</span><span class="d">由平臺端取出／承接資料</span></div>
+    </div>
+    <p class="flowcap reveal"><b>對廠商而言，作法不變</b>：仍依現行規格把書目灌進 onlinedb 即可。資料如何從 onlinedb 移交至智慧閱讀，由本中心、巨耀與凌網協調，<b>不增加各位的負擔</b>。</p>
+  </section>
+
+  <!-- 4 六件事總覽 -->
+  <section class="slide">
+    <div class="reveal"><span class="kicker"><span class="snum">03 / 12</span>　需要大家協助的事</span>
+    <h2>六件事，讓資料一次到位</h2></div>
+    <div class="grid6">
+      <div class="cell reveal"><div class="no">01</div><div class="ct">書目欄位灌齊</div><div class="cd">依現行 24 欄規格，必填欄位不要漏</div></div>
+      <div class="cell reveal"><div class="no">02</div><div class="ct">關鍵欄位務必提供</div><div class="cd">對分眾與推薦最有用的欄位請填滿</div></div>
+      <div class="cell reveal"><div class="no">03</div><div class="ct">書影規格</div><div class="cd">檔名＝書籍編號、≤60KB</div></div>
+      <div class="cell reveal"><div class="no">04</div><div class="ct">書籍編號一致</div><div class="cd">當作比對鍵，定了就別亂動</div></div>
+      <div class="cell reveal"><div class="no">05</div><div class="ct">每日回傳瀏覽紀錄</div><div class="cd">getDBlog，每日至少一次</div></div>
+      <div class="cell reveal"><div class="no">06</div><div class="ct">配合介接測試</div><div class="cd">6/9–6/30 測試期</div></div>
+    </div>
+  </section>
+
+  <!-- 5 欄位灌齊 -->
+  <section class="slide">
+    <div class="reveal"><span class="kicker"><span class="snum">04 / 12</span>　配合事項 ①</span>
+    <h2>請用現行規格，把 24 欄灌齊</h2></div>
+    <div class="body">
+      <ul class="clean">
+        <li class="reveal"><b>批次上傳</b>：syncDBBook 一次可帶多筆（不必一筆一筆送）。</li>
+        <li class="reveal">每筆書目共 <b>24 個欄位</b>，其中 <span class="hl">17 欄為必填</span>。</li>
+        <li class="reveal">必填涵蓋：<b>異動型態、書籍編號、書（刊）名、學制三選（高中職／國中／國小）、八大領域標籤、ISBN／ISSN</b>。</li>
+      </ul>
+      <p class="note reveal">不寫程式也行：可至<b>廠商專區</b>下載 Excel 範例檔，填好上傳即可。重點是<b>必填欄位不要留空</b>，否則該筆會被退。</p>
+    </div>
+  </section>
+
+  <!-- 6 關鍵欄位 -->
+  <section class="slide">
+    <div class="reveal"><span class="kicker"><span class="snum">05 / 12</span>　配合事項 ②</span>
+    <h2>這些欄位，請務必填</h2>
+    <p class="lead">站在智慧閱讀的角度，以下欄位直接決定「能不能做分眾、推薦與 AI 找書」。</p></div>
+    <div class="tbl reveal">
+      <div class="tr head"><div class="th">欄位</div><div class="th">為什麼對智慧閱讀重要</div></div>
+      <div class="tr"><div class="td">學制（高中職／國中／國小）</div><div class="td"><span class="why">分眾推薦、各年級書單的基礎</span></div></div>
+      <div class="tr"><div class="td">八大領域標籤</div><div class="td"><span class="why">主題／領域瀏覽，與課程連動</span></div></div>
+      <div class="tr"><div class="td">ISBN／ISSN</div><div class="td"><span class="why">跨平臺對照、去除重複書目</span></div></div>
+      <div class="tr"><div class="td">書影、簡介、著者、出版資訊</div><div class="td"><span class="why">前臺呈現、檢索與 AI 導讀找書</span></div></div>
+      <div class="tr"><div class="td">圖書分類號</div><div class="td"><span class="why">分類瀏覽與書庫盤點</span></div></div>
+    </div>
+    <p class="note reveal">凌網正檢視全部欄位，<b>最終「必填加強清單」確認後將另行通知</b>；屆時請依清單補齊。</p>
+  </section>
+
+  <!-- 7 對照 Hamibook -->
+  <section class="slide">
+    <div class="reveal"><span class="kicker"><span class="snum">06 / 12</span>　配合事項 ②・對照</span>
+    <h2>我們希望比現況更完整</h2>
+    <p class="lead">以 Hamibook 單一書頁為例 — 公開呈現的欄位其實相當精簡。</p></div>
+    <div class="cmp reveal">
+      <div class="col have">
+        <h3><span class="tag">Hamibook 現況</span></h3>
+        <ul><li>書名</li><li>作者</li><li>出版社</li><li>分類</li><li>檔案格式</li><li>上架日期</li><li>簡介</li></ul>
+        <ul class="miss" style="margin-top:.6rem"><li>ISBN</li><li>字數／頁數</li><li>適讀年齡</li><li>閱讀分級</li></ul>
+      </div>
+      <div class="col want">
+        <h3><span class="tag">智慧閱讀期待</span></h3>
+        <ul><li>書名</li><li>著者</li><li>出版者／出版日</li><li>學制</li><li>八大領域</li><li>ISBN／ISSN</li><li>圖書分類號</li><li>書影</li><li>簡介</li></ul>
+      </div>
+    </div>
+    <p class="note reveal">欄位越完整，平臺越能做到<b>分眾書單、領域推薦與 AI 找書</b>；資料若先天缺漏，後面再補成本最高。</p>
+  </section>
+
+  <!-- 8 書影 -->
+  <section class="slide">
+    <div class="reveal"><span class="kicker"><span class="snum">07 / 12</span>　配合事項 ③</span>
+    <h2>書影規格</h2></div>
+    <div class="body">
+      <ul class="clean">
+        <li class="reveal"><b>檔名需與書籍編號一致</b>（系統以此對應書目）。</li>
+        <li class="reveal">格式 <b>jpg／jpeg／png／gif</b>，單檔 <span class="hl">不超過 60KB</span>。</li>
+        <li class="reveal">可傳<b>完整圖片 URL</b>（http／https 開頭），或以 <b>BASE64</b> 編碼夾帶。</li>
+        <li class="reveal">廠商專區可<b>批次上傳</b>書影。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 9 bookID -->
+  <section class="slide">
+    <div class="reveal"><span class="kicker"><span class="snum">08 / 12</span>　配合事項 ④</span>
+    <h2>書籍編號，是整套資料的鑰匙</h2></div>
+    <div class="body">
+      <ul class="clean">
+        <li class="reveal">書籍編號由<b>廠商自訂</b>，但它是新增／更新／刪除時的<span class="hl">唯一比對鍵</span>。</li>
+        <li class="reveal"><b>一旦定義就不要任意更動</b> — 更新與刪除都靠它找到正確那一筆。</li>
+        <li class="reveal">瀏覽紀錄（getDBlog）回傳的 bookID 必須與書目<b>一致</b>，否則統計會對不上而被退。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 10 getDBlog -->
+  <section class="slide">
+    <div class="reveal"><span class="kicker"><span class="snum">09 / 12</span>　配合事項 ⑤</span>
+    <h2>每日回傳瀏覽紀錄</h2></div>
+    <div class="body">
+      <ul class="clean">
+        <li class="reveal"><b>硬性義務</b>：每日<span class="hl">至少回傳一次</span>瀏覽紀錄（getDBlog）。</li>
+        <li class="reveal">內容包含：<b>搜尋／瀏覽／閱讀</b>事件、學校代碼、使用者、書名與時間。</li>
+        <li class="reveal">用途：作為教育局<b>統計分析與閱讀成效</b>的依據。</li>
+      </ul>
+      <p class="note reveal">建議以<b>排程（每日定時）</b>自動回傳，避免人工遺漏。</p>
+    </div>
+  </section>
+
+  <!-- 11 測試與驗證 -->
+  <section class="slide">
+    <div class="reveal"><span class="kicker"><span class="snum">10 / 12</span>　配合事項 ⑥</span>
+    <h2>介接測試與資料驗證</h2></div>
+    <div class="body">
+      <ul class="clean">
+        <li class="reveal"><b>測試期：115/06/09 ～ 06/30</b>，請於期間內完成介接測試。</li>
+        <li class="reveal">⚠️ 目前<b>沒有</b>「查某一筆是否已入庫」的查詢 API。</li>
+        <li class="reveal">請以上傳當下回傳的 <span class="hl">成功筆數 / 失敗清單</span> 自行核對；或用廠商專區網頁查詢已匯入書籍。</li>
+        <li class="reveal">測試完成、正式上線時，記得把測試網址<b>改回正式站</b>。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 12 時程 -->
+  <section class="slide">
+    <div class="reveal"><span class="kicker"><span class="snum">11 / 12</span>　時程里程碑</span>
+    <h2>從今天到驗收</h2></div>
+    <div class="tl reveal">
+      <div class="ev key"><div class="dt">06 / 08</div><div class="tx">資料介接協調說明（今天）<small>確認配合事項與欄位方向</small></div></div>
+      <div class="ev"><div class="dt">06 / 09–30</div><div class="tx">介接測試期<small>完成 syncDBBook／廠商專區灌資料測試</small></div></div>
+      <div class="ev"><div class="dt">暑期</div><div class="tx">正式灌資料・補齊欄位<small>依凌網「必填加強清單」補完</small></div></div>
+      <div class="ev key"><div class="dt">12 / 31</div><div class="tx">onlinedb 停止服務・業務移轉智慧閱讀<small>資料承接至新平臺</small></div></div>
+      <div class="ev key"><div class="dt">11 / 30</div><div class="tx">智慧閱讀平臺全案驗收<small>新平臺正式承載各資料庫</small></div></div>
+    </div>
+  </section>
+
+  <!-- 13 窗口 + 結語 -->
+  <section class="slide closing">
+    <div class="reveal"><span class="kicker"><span class="snum">12 / 12</span>　聯絡窗口</span>
+    <h2 class="ink">一次把欄位填好填滿，<br>未來新平臺就能<span class="big">直接接住</span></h2></div>
+    <div class="cards reveal">
+      <div class="who"><div class="role">智慧閱讀・主辦</div><div class="nm">周凡淇</div><div class="org">蓬萊國小 數位學習中心<br>nora@hhups.tp.edu.tw</div></div>
+      <div class="who"><div class="role">線上資料庫平臺</div><div class="nm">巨耀資訊</div><div class="org">介接：詹淵蘭　keiko@oneplus.com.tw<br>操作：吳俊霆　02-7730-0089</div></div>
+      <div class="who"><div class="role">建置廠商</div><div class="nm">凌網資訊</div><div class="org">PM　江怡蓓 Rebecca<br>欄位加強清單彙整中</div></div>
+    </div>
+    <p class="note reveal">補充：閱讀分級（<b>SR 值</b>）由 EbookTaipei 提供，不在本批資料庫廠商的灌資料範圍內。</p>
+  </section>
+
+</div>
+
+<div class="dots" id="dots"></div>
+<div class="chrome">
+  <div class="counter"><b id="cur">1</b> / <span id="tot">13</span></div>
+  <div class="nav">
+    <button id="prev" aria-label="上一頁">‹</button>
+    <button id="next" aria-label="下一頁">›</button>
+  </div>
+</div>
+<div class="hint">← → 或空白鍵翻頁　·　按數字鍵跳頁</div>
+
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('.slide')];
+  const N=slides.length;
+  let i=0;
+  const progress=document.getElementById('progress');
+  const cur=document.getElementById('cur');
+  const dots=document.getElementById('dots');
+  document.getElementById('tot').textContent=N;
+  slides.forEach((_,k)=>{const d=document.createElement('i');d.onclick=()=>go(k);dots.appendChild(d)});
+  const dotEls=[...dots.children];
+  function go(n){
+    i=Math.max(0,Math.min(N-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    dotEls.forEach((d,k)=>d.classList.toggle('on',k===i));
+    progress.style.width=((i)/(N-1)*100)+'%';
+    cur.textContent=i+1;
+    document.getElementById('prev').disabled=i===0;
+    document.getElementById('next').disabled=i===N-1;
+  }
+  document.getElementById('next').onclick=()=>go(i+1);
+  document.getElementById('prev').onclick=()=>go(i-1);
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1)}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1)}
+    else if(e.key==='Home'){go(0)} else if(e.key==='End'){go(N-1)}
+    else if(/^[1-9]$/.test(e.key)){go(parseInt(e.key)-1)}
+  });
+  let x0=null;
+  document.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+  document.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)go(i+(dx<0?1:-1));x0=null},{passive:true});
+  go(0);
+})();
+</script>
+</body>
+</html>

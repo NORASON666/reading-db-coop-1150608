@@ -196,6 +196,40 @@ ul.clean li b{font-weight:700}
 .closing h2{font-size:clamp(2rem,5vw,4rem);max-width:18ch;line-height:1.18}
 .closing .big{color:var(--seal)}
 
+/* ---------- vision mockup ---------- */
+.vision{padding:clamp(1.3rem,3.2vw,2.6rem) clamp(1.6rem,5vw,5rem)}
+.vision h2{font-size:clamp(1.5rem,3.2vw,2.5rem);margin-bottom:.15rem}
+.vsub{font-size:clamp(.86rem,1.25vw,1.05rem);color:var(--ink-mid);margin:.1rem 0 .9rem;max-width:82ch;line-height:1.55}
+.mk{border:1.5px solid var(--line-strong);border-radius:13px;overflow:hidden;box-shadow:var(--shadow);background:#fbf8f1;max-width:1060px;width:100%;margin:0 auto}
+.mk-top{display:flex;align-items:center;gap:.9rem;padding:.6rem 1rem;background:linear-gradient(#fff,#f6efe2);border-bottom:1.5px solid var(--line)}
+.mk-brand{font-weight:700;font-size:1rem;color:var(--seal-deep);white-space:nowrap}
+.mk-search{flex:1;display:flex;align-items:center;gap:.5rem;background:#fff;border:1px solid var(--line-strong);border-radius:99px;padding:.36rem .9rem;font-family:var(--sans);font-size:.78rem;color:var(--ink-mid)}
+.mk-sr{margin-left:auto;background:var(--seal);color:#fff;border-radius:99px;padding:.1rem .55rem;font-size:.7rem;font-weight:700}
+.mk-login{font-family:var(--sans);font-size:.78rem;font-weight:700;color:var(--ink);border:1px solid var(--line-strong);border-radius:8px;padding:.32rem .8rem;white-space:nowrap}
+.mk-cats{display:flex;gap:.38rem;flex-wrap:wrap;padding:.55rem 1rem;border-bottom:1px solid var(--line);font-family:var(--sans);font-size:.74rem}
+.mk-cats span{padding:.22rem .58rem;border-radius:99px;background:#efe6d6;color:var(--ink-mid)}
+.mk-cats span.on{background:var(--ink);color:var(--paper)}
+.mk-body{padding:.7rem 1rem 1rem}
+.mk-shelf{margin-top:.8rem}
+.mk-shelf:first-child{margin-top:.1rem}
+.mk-shelf-h{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.98rem;margin-bottom:.5rem}
+.mk-tag{font-family:var(--sans);font-size:.6rem;font-weight:700;letter-spacing:.12em;background:var(--gold);color:#fff;padding:.1rem .48rem;border-radius:5px}
+.mk-more{margin-left:auto;font-family:var(--sans);font-size:.72rem;color:var(--ink-mid);font-weight:400}
+.mk-row{display:grid;grid-template-columns:repeat(5,1fr);gap:.65rem}
+.mk-book{display:flex;flex-direction:column;gap:.28rem;min-width:0}
+.mk-cover{aspect-ratio:3/4;border-radius:3px 7px 7px 3px;background:linear-gradient(145deg,var(--c1),var(--c2));box-shadow:0 6px 13px -6px rgba(31,28,23,.55),inset 5px 0 0 rgba(255,255,255,.16),inset 7px 0 0 rgba(0,0,0,.10);display:flex;align-items:center;justify-content:center;text-align:center;padding:.4rem}
+.mk-cover b{color:#fff;font-size:.72rem;font-weight:600;line-height:1.3;text-shadow:0 1px 3px rgba(0,0,0,.35)}
+.mk-cover.coll{flex-direction:column;gap:.2rem}
+.mk-cover.coll small{font-family:var(--sans);color:#ffffffcc;font-size:.6rem;background:rgba(0,0,0,.22);padding:.05rem .4rem;border-radius:99px}
+.mk-bt{font-size:.72rem;font-weight:600;line-height:1.22;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mk-badges{display:flex;flex-wrap:wrap;gap:.2rem}
+.mk-badges i{font-family:var(--sans);font-style:normal;font-size:.58rem;padding:.05rem .3rem;border-radius:4px;background:#e9dfcd;color:var(--ink-mid)}
+.mk-badges i.sr{background:var(--seal);color:#fff}
+.mk-badges i.dom{background:#dde9dd;color:#3a5a3a}
+.mk-cap{font-family:var(--sans);font-size:.8rem;color:var(--ink-mid);margin-top:.85rem;text-align:center;line-height:1.6}
+.mk-cap b{color:var(--seal-deep)}
+@media(max-width:760px){.mk-row{grid-template-columns:repeat(3,1fr)}.mk-book:nth-child(n+4){display:none}.mk-search{display:none}}
+
 /* ---------- chrome ---------- */
 .chrome{position:fixed;z-index:20;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;padding:1rem clamp(1.4rem,4vw,3rem);pointer-events:none}
 .progress{position:fixed;top:0;left:0;height:3px;background:var(--seal);z-index:21;transition:width .5s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 12px rgba(178,58,46,.5)}
@@ -257,7 +291,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 2 背景 -->
   <section class="slide">
-    <div class="reveal"><span class="kicker"><span class="snum">01 / 15</span>　為什麼請大家來</span>
+    <div class="reveal"><span class="kicker"><span class="snum">01 / 16</span>　為什麼請大家來</span>
     <h2>三個平臺，正在合而為一</h2></div>
     <div class="body">
       <ul class="clean">
@@ -271,7 +305,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 3 資料流向 -->
   <section class="slide">
-    <div class="reveal"><span class="kicker"><span class="snum">02 / 15</span>　資料怎麼流（本年度作法）</span>
+    <div class="reveal"><span class="kicker"><span class="snum">02 / 16</span>　資料怎麼流（本年度作法）</span>
     <h2>先匯入現行資料庫，智慧閱讀再取出</h2></div>
     <div class="flow reveal">
       <div class="node"><span class="t">內容廠商</span><span class="d">今年度線上資料庫得標廠商</span></div>
@@ -285,7 +319,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 4 六件事總覽 -->
   <section class="slide">
-    <div class="reveal"><span class="kicker"><span class="snum">03 / 15</span>　需要大家協助的事</span>
+    <div class="reveal"><span class="kicker"><span class="snum">03 / 16</span>　需要大家協助的事</span>
     <h2>六件事，讓資料一次到位</h2></div>
     <div class="grid6">
       <div class="cell reveal"><div class="no">01</div><div class="ct">書目欄位灌齊</div><div class="cd">依現行 24 欄規格，必填欄位不要漏</div></div>
@@ -299,7 +333,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 5 欄位灌齊 -->
   <section class="slide">
-    <div class="reveal"><span class="kicker"><span class="snum">04 / 15</span>　配合事項 ①</span>
+    <div class="reveal"><span class="kicker"><span class="snum">04 / 16</span>　配合事項 ①</span>
     <h2>請用現行規格，把 24 欄灌齊</h2></div>
     <div class="body">
       <ul class="clean">
@@ -313,7 +347,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 6 關鍵欄位 -->
   <section class="slide">
-    <div class="reveal"><span class="kicker"><span class="snum">05 / 15</span>　配合事項 ②</span>
+    <div class="reveal"><span class="kicker"><span class="snum">05 / 16</span>　配合事項 ②</span>
     <h2>這些欄位，請務必填</h2>
     <p class="lead">站在智慧閱讀的角度，以下欄位直接決定「能不能做分眾、推薦與 AI 找書」。</p></div>
     <div class="tbl reveal">
@@ -329,7 +363,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 7 對照 Hamibook -->
   <section class="slide">
-    <div class="reveal"><span class="kicker"><span class="snum">06 / 15</span>　配合事項 ②・對照</span>
+    <div class="reveal"><span class="kicker"><span class="snum">06 / 16</span>　配合事項 ②・對照</span>
     <h2>我們希望比現況更完整</h2>
     <p class="lead">以 Hamibook 單一書頁為例 — 公開呈現的欄位其實相當精簡。</p></div>
     <div class="cmp reveal">
@@ -348,7 +382,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 8 書影 -->
   <section class="slide">
-    <div class="reveal"><span class="kicker"><span class="snum">07 / 15</span>　配合事項 ③</span>
+    <div class="reveal"><span class="kicker"><span class="snum">07 / 16</span>　配合事項 ③</span>
     <h2>書影規格</h2></div>
     <div class="body">
       <ul class="clean">
@@ -362,7 +396,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 9 bookID -->
   <section class="slide">
-    <div class="reveal"><span class="kicker"><span class="snum">08 / 15</span>　配合事項 ④</span>
+    <div class="reveal"><span class="kicker"><span class="snum">08 / 16</span>　配合事項 ④</span>
     <h2>書籍編號，是整套資料的鑰匙</h2></div>
     <div class="body">
       <ul class="clean">
@@ -375,7 +409,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 10 getDBlog -->
   <section class="slide">
-    <div class="reveal"><span class="kicker"><span class="snum">09 / 15</span>　配合事項 ⑤</span>
+    <div class="reveal"><span class="kicker"><span class="snum">09 / 16</span>　配合事項 ⑤</span>
     <h2>每日回傳瀏覽紀錄</h2></div>
     <div class="body">
       <ul class="clean">
@@ -389,7 +423,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 11 測試與驗證 -->
   <section class="slide">
-    <div class="reveal"><span class="kicker"><span class="snum">10 / 15</span>　配合事項 ⑥</span>
+    <div class="reveal"><span class="kicker"><span class="snum">10 / 16</span>　配合事項 ⑥</span>
     <h2>介接測試與資料驗證</h2></div>
     <div class="body">
       <ul class="clean">
@@ -403,7 +437,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 11 子集合入口（給內容廠商） -->
   <section class="slide">
-    <div class="reveal"><span class="kicker"><span class="snum">11 / 15</span>　更進一步・讓書單更豐富</span>
+    <div class="reveal"><span class="kicker"><span class="snum">11 / 16</span>　更進一步・讓書單更豐富</span>
     <h2>把一個資料庫，拆成好幾個入口</h2>
     <p class="lead">今年度線上資料庫得標廠商共 <b>5 家</b>，品項相對精簡 — 但在呈現上，我們可以讓它更豐富。</p></div>
     <div class="body">
@@ -418,7 +452,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 11b 跨縣市 -->
   <section class="slide">
-    <div class="reveal"><span class="kicker"><span class="snum">12 / 15</span>　平臺需求提醒（給凌網）</span>
+    <div class="reveal"><span class="kicker"><span class="snum">12 / 16</span>　平臺需求提醒（給凌網）</span>
     <h2>別忘了：澎湖・金門・連江也要能用</h2>
     <p class="lead">這套線上資料庫規格是<span class="hl">跨縣市共用</span>，不是只有臺北市。</p></div>
     <div class="flow reveal" style="gap:.7rem">
@@ -432,7 +466,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 13 自主匯出（給巨耀） -->
   <section class="slide">
-    <div class="reveal"><span class="kicker"><span class="snum">13 / 15</span>　平臺需求提醒（給巨耀）</span>
+    <div class="reveal"><span class="kicker"><span class="snum">13 / 16</span>　平臺需求提醒（給巨耀）</span>
     <h2>請巨耀：讓我們能自主匯出資料庫</h2>
     <p class="lead">現行 onlinedb 由<b>巨耀</b>維運。資料的主導權，要握在教育局手上。</p></div>
     <div class="body">
@@ -448,7 +482,7 @@ ul.clean li b{font-weight:700}
 
   <!-- 12 時程 -->
   <section class="slide">
-    <div class="reveal"><span class="kicker"><span class="snum">14 / 15</span>　時程里程碑</span>
+    <div class="reveal"><span class="kicker"><span class="snum">14 / 16</span>　時程里程碑</span>
     <h2>從今天到驗收</h2></div>
     <div class="tl reveal">
       <div class="ev key"><div class="dt">06 / 08</div><div class="tx">資料介接協調說明（今天）<small>確認配合事項與欄位方向</small></div></div>
@@ -459,10 +493,50 @@ ul.clean li b{font-weight:700}
     </div>
   </section>
 
-  <!-- 13 窗口 + 結語 -->
+  <!-- 15 願景・想像圖 -->
+  <section class="slide vision">
+    <div class="reveal"><span class="kicker"><span class="snum">15 / 16</span>　願景・線上資料庫想像圖</span>
+    <h2>未來的線上資料庫，長這樣</h2>
+    <p class="vsub">以 HyRead 書牆為雛型，把各資料庫做成可瀏覽的「<span class="hl">子集合</span>」書牆——而不是現在 onlinedb 的一個登入頁。書卡上的<b>學制／領域／SR 徽章</b>，正是前面請大家填齊的欄位。</p></div>
+    <div class="mk reveal">
+      <div class="mk-top">
+        <div class="mk-brand">📖 智慧閱讀・線上資料庫</div>
+        <div class="mk-search">🔍 書名・作者・關鍵字…<span class="mk-sr">SR 查詢</span></div>
+        <div class="mk-login">登入</div>
+      </div>
+      <div class="mk-cats">
+        <span class="on">全部</span><span>人文社會</span><span>文學小說</span><span>語言學習</span><span>財經商管</span><span>科學科普</span><span>親子童書</span><span>漫畫繪本</span><span>藝術設計</span>
+      </div>
+      <div class="mk-body">
+        <div class="mk-shelf">
+          <div class="mk-shelf-h"><span class="mk-tag">子集合</span>主題書展・閱讀素養<span class="mk-more">看全部 ›</span></div>
+          <div class="mk-row">
+            <div class="mk-book"><div class="mk-cover" style="--c1:#2f6f6a;--c2:#1f4a47"><b>海洋的祕密</b></div><div class="mk-bt">海洋的祕密</div><div class="mk-badges"><i>國小</i><i class="dom">自然</i><i class="sr">SR 480</i></div></div>
+            <div class="mk-book"><div class="mk-cover" style="--c1:#b5573f;--c2:#8f3c2a"><b>字的旅行</b></div><div class="mk-bt">字的旅行</div><div class="mk-badges"><i>國小</i><i class="dom">國語</i><i class="sr">SR 520</i></div></div>
+            <div class="mk-book"><div class="mk-cover" style="--c1:#b08a3e;--c2:#856526"><b>數感生活</b></div><div class="mk-bt">數感生活</div><div class="mk-badges"><i>國中</i><i class="dom">數學</i><i class="sr">SR 600</i></div></div>
+            <div class="mk-book"><div class="mk-cover" style="--c1:#6e4a6b;--c2:#4d3149"><b>島嶼的故事</b></div><div class="mk-bt">島嶼的故事</div><div class="mk-badges"><i>國中</i><i class="dom">社會</i><i class="sr">SR 650</i></div></div>
+            <div class="mk-book"><div class="mk-cover" style="--c1:#3a4256;--c2:#232838"><b>發明家列傳</b></div><div class="mk-bt">發明家列傳</div><div class="mk-badges"><i>高中職</i><i class="dom">自然</i><i class="sr">SR 720</i></div></div>
+          </div>
+        </div>
+        <div class="mk-shelf">
+          <div class="mk-shelf-h"><span class="mk-tag">子集合</span>各資料庫・依領域<span class="mk-more">看全部 ›</span></div>
+          <div class="mk-row">
+            <div class="mk-book"><div class="mk-cover coll" style="--c1:#3f6f8f;--c2:#274a63"><b>科普探索書庫</b><small>1,240 冊</small></div><div class="mk-bt">科普探索書庫</div></div>
+            <div class="mk-book"><div class="mk-cover coll" style="--c1:#8f5a3f;--c2:#643a26"><b>文學經典館</b><small>980 冊</small></div><div class="mk-bt">文學經典館</div></div>
+            <div class="mk-book"><div class="mk-cover coll" style="--c1:#4f7a55;--c2:#345638"><b>語言學習館</b><small>640 冊</small></div><div class="mk-bt">語言學習館</div></div>
+            <div class="mk-book"><div class="mk-cover coll" style="--c1:#9a6a3a;--c2:#6e4824"><b>親子童書區</b><small>1,510 冊</small></div><div class="mk-bt">親子童書區</div></div>
+            <div class="mk-book"><div class="mk-cover coll" style="--c1:#6a4a6e;--c2:#47314c"><b>藝術設計庫</b><small>420 冊</small></div><div class="mk-bt">藝術設計庫</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="mk-cap reveal">現況 <b>onlinedb.tp.edu.tw 僅一個登入頁</b>；上圖為導入完整書目欄位後可實現的瀏覽樣貌（書名、冊數、分類為示意）。呼應第 11 頁「拆成好幾個入口」與第 6 頁「欄位要完整」。</p>
+  </section>
+
+  <!-- 16 窗口 + 結語 -->
   <section class="slide closing">
     <img class="closing-art" src="assets/cover.png" alt="">
-    <div class="reveal"><span class="kicker"><span class="snum">15 / 15</span>　聯絡窗口</span>
+    <div class="reveal"><span class="kicker"><span class="snum">16 / 16</span>　聯絡窗口</span>
     <h2 class="ink">一次把欄位填好填滿，<br>未來新平臺就能<span class="big">直接接住</span></h2></div>
     <div class="cards reveal">
       <div class="who"><div class="role">智慧閱讀・主辦</div><div class="nm">周凡淇</div><div class="org">蓬萊國小 數位學習中心<br>nora@hhups.tp.edu.tw</div></div>
